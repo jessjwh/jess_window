@@ -11,9 +11,13 @@ def get_names() -> list[str]:
 # names:list[str] = get_names()
 # print(__name__)
 
+class Window(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title('My First GUI')
+
 if __name__ == '__main__':
     names:list[str] = get_names()
     # print(names)
-    window:tk.Tk = tk.Tk()
-    window.title('My First GUI')
+    window:Window = Window()
     window.mainloop()
