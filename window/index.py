@@ -15,4 +15,5 @@ if __name__ == '__main__':
     names:list[str] = get_names()
     # print(names)
     window:tk.Tk = tk.Tk()
+    window.title('My First GUI')
     window.mainloop()
