@@ -21,6 +21,7 @@ class Window(tk.Tk):
                                     font=('Arial', 30, 'bold'),
                                     foreground='#f98')
         label.pack(padx=100,pady=40)
+        ttk.Button(self, text='Wave Back!').pack()
 
 if __name__ == '__main__':
     names:list[str] = get_names()
