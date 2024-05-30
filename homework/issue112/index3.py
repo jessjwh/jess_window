@@ -9,7 +9,7 @@ class Window(tk.Tk):
 
         ttk.Button(self, text='Rice').pack(side='left', expand=False, fill='x')
         ttk.Button(self, text='Pizza').pack(side='left', expand=False, fill='x')
-        ttk.Button(self, text='SUSHI').pack(side='left', expand=True, fill='x')
+        tk.Button(self, text='SUSHI').pack(side='left', expand=1, fill='both')
 
 
 if __name__ =='__main__':

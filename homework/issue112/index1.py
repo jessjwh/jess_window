@@ -10,7 +10,7 @@ class Window(tk.Tk):
                                     font=('Arial', 30, 'bold'),
                                     foreground='#f98')
         label.pack(padx=100,pady=40)
-        ttk.Button(self, text='Wave Back!').pack()
+        tk.Button(self, text='Wave Back!').pack(fill='both', expand=1)
 
 if __name__ == '__main__':
     window:Window = Window(title='Greetings')
