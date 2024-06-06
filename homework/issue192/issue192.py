@@ -2,6 +2,7 @@ import requests
 from requests import JSONDecodeError
 from pydantic import BaseModel, RootModel, Field, field_validator
 from pprint import pprint
+from datetime import datetime
 
 
 def download_json() -> list[dict]:
@@ -30,10 +31,10 @@ except Exception as error:
 class Site(BaseModel):
     site_name:str = Field(alias='sna')
     site_area:str = Field(alias='sarea')
-    mday:str
+    mday:datetime
     address:str = Field(alias='ar')
     act:str
-    updateTime:str
+    updateTime:datetime
     total_bikes:int = Field(alias='total')
     rent_bikes:int = Field(alias='available_rent_bikes')
     latitude:float
@@ -45,6 +46,6 @@ class Bike(RootModel):
     root:list[Site]
 
 bike:Bike = Bike.model_validate(all_data)
-data = bike.model_dump()
+data:list[dict] = bike.model_dump()
 
 pprint(data)
