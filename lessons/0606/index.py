@@ -49,29 +49,60 @@ class Window(ThemedTk):
     def click1(self):
         self.update_data()
         data:list[dict] = tools.AQI.aqi_records
-        sorted_data:list[dict] = sorted(data, key=lambda value:value['aqi'])
+        sorted_data:list[dict] = sorted(data,key=lambda value:value['aqi'])
         best5_aqi:list[dict] = sorted_data[:5]
-        pprint(best5_aqi)
+        def abc(value:dict)->str:
+            return f"{value['county']} - {value['site_name']} - 空氣品質:{value['aqi']} - 狀態:{value['status']} - {value['date']}"
+        message_data:list[str] = list(map(abc,best5_aqi))
+        message = "\n".join(message_data)
+        print(message)
+        ShowInfo(parent=self,title="AQI Best 5 Districts",message=message)
 
     def click2(self):
         self.update_data()
+        data:list[dict] = tools.AQI.aqi_records
+        sorted_data:list[dict] = sorted(data,key=lambda value:value['aqi'], reverse=True)
+        best5_aqi:list[dict] = sorted_data[:5]
+        def abc(value:dict)->str:
+            return f"{value['county']} - {value['site_name']} - 空氣品質:{value['aqi']} - 狀態:{value['status']} - {value['date']}"
+        message_data:list[str] = list(map(abc,best5_aqi))
+        message = "\n".join(message_data)
+        print(message)
+        ShowInfo(parent=self,title="AQI Worst 5 Districts",message=message)
     
     def click3(self):
         self.update_data()
-        messagebox.showwarning("Warning","Warning message")
+        data:list[dict] = tools.AQI.aqi_records
+        sorted_data:list[dict] = sorted(data,key=lambda value:value['pm25'])
+        best5_aqi:list[dict] = sorted_data[:5]
+        def abc(value:dict)->str:
+            return f"{value['county']} - {value['site_name']} - pm2.5:{value['pm25']} - 狀態:{value['status']} - {value['date']}"
+        message_data:list[str] = list(map(abc,best5_aqi))
+        message = "\n".join(message_data)
+        print(message)
+        ShowInfo(parent=self,title="pm2.5 Best 5 Districts",message=message)
 
     def click4(self):
         self.update_data()
-        ShowInfo(parent=self,title="This is a dialog.")
+        data:list[dict] = tools.AQI.aqi_records
+        sorted_data:list[dict] = sorted(data,key=lambda value:value['pm25'], reverse=True)
+        best5_aqi:list[dict] = sorted_data[:5]
+        def abc(value:dict)->str:
+            return f"{value['county']} - {value['site_name']} - pm2.5:{value['pm25']} - 狀態:{value['status']} - {value['date']}"
+        message_data:list[str] = list(map(abc,best5_aqi))
+        message = "\n".join(message_data)
+        print(message)
+        ShowInfo(parent=self,title="pm2.5 Worst 5 Districts",message=message)
 
 class ShowInfo(Dialog):
-    def __init__(self, parent:Misc, title:str | None = None):
-        super().__init__(parent=parent, title=title)
+    def __init__(self,parent:Misc,title:str | None = None,message:str=""):
+        self.message = message
+        super().__init__(parent=parent,title=title) 
 
     def body(self, master: Frame) -> Misc | None:
-            text = tk.Text(self,height=8,font=('Helvetica',16),width=30)
-            text.pack(padx=5,pady=5)
-            text.insert(tk.INSERT,"Hello Jess")
+            text = tk.Text(self,height=10,font=('Helvetica',12),width=50)
+            text.pack(padx=10,pady=10)
+            text.insert(tk.INSERT,self.message)
             text.config(state='disabled')
             return None
     
