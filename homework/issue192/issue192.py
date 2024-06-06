@@ -1,6 +1,6 @@
 import requests
 from requests import JSONDecodeError
-from pydantic import BaseModel, RootModel, Field, field_validator
+from pydantic import BaseModel, RootModel, Field, field_serializer
 from pprint import pprint
 from datetime import datetime
 
@@ -41,6 +41,9 @@ class Site(BaseModel):
     longitude:float
     return_bikes:int = Field(alias='available_return_bikes')
 
+    @field_serializer("mday", "updateTime")
+    def serialize_str(self, value:datetime) -> str:
+        return value.strftime('%Y-%m-%d %p%I:%M:%S')
 
 class Bike(RootModel):
     root:list[Site]
