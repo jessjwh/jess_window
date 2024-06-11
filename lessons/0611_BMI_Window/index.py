@@ -11,7 +11,7 @@ class Window(ThemedTk):
         self.resizable(False, False)
         style = ttk.Style()
         style.configure('input.TFrame', background="#f99")
-        style.configure('press.TButton', font=("Helvetica", 18))
+        style.configure('press.TButton', font=("Helvetica", 14))
 
 #====================================================================================
         titleFrame = ttk.Frame(self)
@@ -72,7 +72,7 @@ class Window(ThemedTk):
             weight_change = ideal_weight-weight
             advice = f'Try lose another {abs(weight_change):.1f}kg to be healthier.'
 
-        result_message = f"Hey {name}!:\n   Your BMI is:{bmi:.1f}\n   {status}\n   {advice}"
+        result_message = f"Hey {name}!\n   Your BMI is:{bmi:.1f}\n   {status}\n   {advice}"
         print(result_message)
 
 
