@@ -23,20 +23,29 @@ class Window(ThemedTk):
         input_frame = ttk.Frame(self, width=100, height=100, style='input.TFrame')
         input_frame.pack(pady=5)
 
+        # NAME
         label_name = ttk.Label(input_frame, text="Who's dis:")
         label_name.grid(row=0, column=0, padx=5, pady=5, sticky=tk.E)
-        self.entry_name = ttk.Entry(input_frame)
-        self.entry_name.grid(row=0, column=1, padx=5, pady=5)
+        self.name_value = tk.StringVar()
+        self.name_value.set('')
+        entry_name = ttk.Entry(input_frame, textvariable=self.name_value)
+        entry_name.grid(row=0, column=1, padx=5, pady=5)
 
+        # HEIGHT
         label_height = ttk.Label(input_frame, text="Height (cm):")
         label_height.grid(row=1, column=0, padx=5, pady=5, sticky=tk.E)
-        self.entry_height = ttk.Entry(input_frame)
-        self.entry_height.grid(row=1, column=1, padx=5, pady=5)
-
+        self.height_value = tk.StringVar()
+        self.height_value.set('')
+        entry_height = ttk.Entry(input_frame, textvariable=self.height_value)
+        entry_height.grid(row=1, column=1, padx=5, pady=5)
+        
+        # WEIGHT
         label_weight = ttk.Label(input_frame, text="Weight (kg):")
         label_weight.grid(row=2, column=0, padx=5, pady=5, sticky=tk.E)
-        self.entry_weight = ttk.Entry(input_frame)
-        self.entry_weight.grid(row=2, column=1, padx=5, pady=5)        
+        self.weight_value = tk.StringVar()
+        self.weight_value.set('')
+        entry_weight = ttk.Entry(input_frame, textvariable=self.weight_value)
+        entry_weight.grid(row=2, column=1, padx=5, pady=5)        
 
         input_frame.pack(pady=10,padx=30)
 #------------------------------------------------------------------------------------
@@ -45,9 +54,9 @@ class Window(ThemedTk):
 #====================================================================================
     def show_bmi_result(self):
         try:
-            name:str = self.entry_name.get()
-            height:int = int(self.entry_height.get())
-            weight:int = int(self.entry_weight.get())
+            name:str = self.name_value.get()
+            height:int = int(self.height_value.get())
+            weight:int = int(self.weight_value.get())
 
         except Exception:
             messagebox.showwarning(Warning, "You entered the wrong thing, dummy!")
@@ -74,9 +83,8 @@ class Window(ThemedTk):
         
         CustomMessagebox(self, title="BMI", name=name, bmi=bmi, status=status, advice=advice)
 
-      
-
-
+def __repr__(self):
+    return "I'm the entity of 'Window'"
 
 def main():
     window = Window(theme='arc')
