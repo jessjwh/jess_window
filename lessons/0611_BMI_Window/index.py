@@ -52,9 +52,10 @@ class Window(ThemedTk):
         button_frame = ttk.Frame(self)
         button_cal = ttk.Button(button_frame, text="LET'S SEEEEEE!", command=self.show_bmi_result, style='press.TButton')
         button_cal.pack(side=tk.RIGHT, expand=True, fill=tk.X)
-        button_close = ttk.Button(button_frame, text="Nah.", style='press.TButton')
+        button_close = ttk.Button(button_frame, text="Nah.", command=self.destroy, style='press.TButton')
         button_close.pack(side=tk.LEFT, expand=True, fill=tk.X)
         button_frame.pack(padx=40, fill=tk.X, pady=(0,15))
+
 #====================================================================================
     def show_bmi_result(self):
         try:
