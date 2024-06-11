@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 from ttkthemes import ThemedTk
+from tools import CustomMessagebox
 
 class Window(ThemedTk):
     def __init__(self, theme:str | None, **kwargs):
@@ -42,7 +43,6 @@ class Window(ThemedTk):
         button_cal = ttk.Button(self, text="LET'S SEEE!", command=self.show_bmi_result, style='press.TButton')
         button_cal.pack(side=tk.RIGHT, padx=(0,35), pady=(20), ipadx=10)
 #====================================================================================
-
     def show_bmi_result(self):
         try:
             name:str = self.entry_name.get()
@@ -71,9 +71,10 @@ class Window(ThemedTk):
             ideal_weight = 24.9 * (height/100)**2
             weight_change = ideal_weight-weight
             advice = f'Try lose another {abs(weight_change):.1f}kg to be healthier.'
+        
+        CustomMessagebox(self, title="BMI", name=name, bmi=bmi, status=status, advice=advice)
 
-        result_message = f"Hey {name}!\n   Your BMI is:{bmi:.1f}\n   {status}\n   {advice}"
-        print(result_message)
+      
 
 
 
