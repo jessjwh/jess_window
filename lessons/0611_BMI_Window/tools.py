@@ -49,5 +49,14 @@ class CustomMessagebox(Dialog):
         print(self.parent.height_value.set(''))
         print(self.parent.weight_value.set(''))
 
+    def buttonbox(self):
+        box = ttk.Frame(self)
+        self.ok_buttton = tk.Button(box, text="FINE.", width=10, command=self.ok, default=tk.ACTIVE)
+        self.ok_buttton.pack(side=tk.LEFT, padx=5, pady=5)
+        box.pack()
+
+    def ok(self):
+        print("'FINE' button was clicked.")
+        super().ok()
 
          

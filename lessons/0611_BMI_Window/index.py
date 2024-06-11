@@ -55,15 +55,15 @@ class Window(ThemedTk):
     def show_bmi_result(self):
         try:
             name:str = self.name_value.get()
-            height:int = int(self.height_value.get())
-            weight:int = int(self.weight_value.get())
+            height:float = float(self.height_value.get())
+            weight:float = float(self.weight_value.get())
 
         except Exception:
             messagebox.showwarning(Warning, "You entered the wrong thing, dummy!")
         else:
             self.show_result(name=name, weight=weight, height=height)
 
-    def show_result(self, name:str, height:int, weight:int):
+    def show_result(self, name:str, height:float, weight:float):
         bmi = weight / (height/100) **2
         if bmi < 18.5:
             status = "You're too skinny!"
