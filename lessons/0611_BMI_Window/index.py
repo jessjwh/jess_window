@@ -89,7 +89,7 @@ class Window(ThemedTk):
             status_color = "#f66"
             advice = f'Try lose another {abs(weight_change):.1f}kg to be healthier.'
         
-        CustomMessagebox(self, title="BMI", name=name, bmi=bmi, status=status, advice=advice, status_color=status_color)
+        CustomMessagebox(self, title="BMI Result", name=name, bmi=bmi, status=status, advice=advice, status_color=status_color)
 
 def main():
     window = Window(theme='arc')
