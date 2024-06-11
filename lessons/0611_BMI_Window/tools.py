@@ -3,12 +3,14 @@ from tkinter import ttk, Misc
 import tkinter as tk
 
 class CustomMessagebox(Dialog):
-    def __init__(self, parent:Misc, title:str, name:str, bmi:float, status:str, advice:str):
+    def __init__(self, parent:Misc, title:str, name:str, bmi:float, status:str, advice:str, status_color:str):
         self.parent = parent
         self.name = name
         self.bmi = bmi
         self.status = status
         self.advice = advice
+        style = ttk.Style()
+        style.configure('status.TLabel', foreground=status_color)
         super().__init__(parent=parent, title=title)
 
 
@@ -33,7 +35,7 @@ class CustomMessagebox(Dialog):
         # STATUS
         label_status = ttk.Label(content_frame, text="Status:")
         label_status.grid(row=2, column=0, padx=5, pady=5, sticky=tk.E)
-        self.value_status = ttk.Label(content_frame, text = self.status)
+        self.value_status = ttk.Label(content_frame, text = self.status, style='status.TLabel')
         self.value_status.grid(row=2, column=1, padx=5, pady=5)        
 
         # ADVICE

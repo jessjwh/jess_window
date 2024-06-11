@@ -16,7 +16,7 @@ class Window(ThemedTk):
 
 #====================================================================================
         titleFrame = ttk.Frame(self)
-        title_label = ttk.Label(self, text="Am I Fat?", font=("Helvetica", 24))
+        title_label = ttk.Label(self, text="Are You Actually Fat?", font=("Helvetica", 24))
         title_label.pack(pady=30)
         titleFrame.pack(padx=100,pady=(0,10))
 #------------------------------------------------------------------------------------
@@ -49,8 +49,12 @@ class Window(ThemedTk):
 
         input_frame.pack(pady=10,padx=30)
 #------------------------------------------------------------------------------------
-        button_cal = ttk.Button(self, text="LET'S SEEE!", command=self.show_bmi_result, style='press.TButton')
-        button_cal.pack(side=tk.RIGHT, padx=(0,35), pady=(20), ipadx=10)
+        button_frame = ttk.Frame(self)
+        button_cal = ttk.Button(button_frame, text="LET'S SEEEEEE!", command=self.show_bmi_result, style='press.TButton')
+        button_cal.pack(side=tk.RIGHT, expand=True, fill=tk.X)
+        button_close = ttk.Button(button_frame, text="Nah.", style='press.TButton')
+        button_close.pack(side=tk.LEFT, expand=True, fill=tk.X)
+        button_frame.pack(padx=40, fill=tk.X, pady=(0,15))
 #====================================================================================
     def show_bmi_result(self):
         try:
@@ -69,22 +73,23 @@ class Window(ThemedTk):
             status = "You're too skinny!"
             ideal_weight = 18.5 * (height/100)**2
             weight_change = ideal_weight-weight
+            status_color = "#f89"
             advice = f'Put on another {abs(weight_change):.1f}kg to be healthier.'
         elif 18.5 <= bmi <=24.9:
             status = "You're fit!"
             ideal_weight = 18.5 * (height/100)**2
             weight_change = ideal_weight-weight
+            status_color = "#f97"
+
             advice = 'Keep it up!'
         else:
             status = "You're a bit fat!"
             ideal_weight = 24.9 * (height/100)**2
             weight_change = ideal_weight-weight
+            status_color = "#f66"
             advice = f'Try lose another {abs(weight_change):.1f}kg to be healthier.'
         
-        CustomMessagebox(self, title="BMI", name=name, bmi=bmi, status=status, advice=advice)
-
-def __repr__(self):
-    return "I'm the entity of 'Window'"
+        CustomMessagebox(self, title="BMI", name=name, bmi=bmi, status=status, advice=advice, status_color=status_color)
 
 def main():
     window = Window(theme='arc')
