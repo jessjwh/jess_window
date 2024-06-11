@@ -30,11 +30,7 @@ class Youbike_Data(RootModel):
     root:list[Info]
 
 def load_data()->list[dict]:
-    try:
-        all_data:dict[any] = __download_json()
-    except Exception as error:
-        print(error)
-        
+    all_data:dict[any] = __download_json()
     youbike_data:Youbike_Data = Youbike_Data.model_validate(all_data)
     data = youbike_data.model_dump()
     return data
