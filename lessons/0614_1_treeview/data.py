@@ -26,10 +26,10 @@ class Info(BaseModel):
     lng:float = Field(alias="longitude")
     retuen_bikes:int = Field(alias="available_return_bikes")
 
-    @field_validator("sna", mode='before')
+    @field_validator("sna",mode='before')
     @classmethod
-    def flex_string(cls, value:str) -> str:
-        return value.split(sep="_"[-1])
+    def flex_string(cls, value:str)->str:
+        return value.split(sep="_")[-1]
 
 class Youbike_Data(RootModel):
     root:list[Info]

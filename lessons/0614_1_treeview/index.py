@@ -15,9 +15,13 @@ class Window(ThemedTk):
 
         self._display_interface()
 
+    @property
+    def data(self)->list[dict]:
+        return self.__data
+
     def _display_interface(self):
         mainFrame = ttk.Frame(borderwidth=1, relief="groove")
-        ttk.Label(mainFrame, text="YouBike2.0 Realtime Data", font=('Helvetica', 16)).pack(pady=(20,10))
+        ttk.Label(mainFrame, text="YouBike2.0 Realtime Data", font=('arial',16)).pack(pady=(20,10))
 
 
         tableFrame = ttk.Frame(mainFrame)
@@ -33,12 +37,15 @@ class Window(ThemedTk):
         tree.heading('retuen_bikes', text='Spots')
 
         # define column width
-        tree.column('sarea', width=70, anchor=tk.CENTER)
-        tree.column('mday', width=120, anchor=tk.CENTER)
-        tree.column('ar', minwidth=100)
-        tree.column('total', width=50, anchor=tk.CENTER)
-        tree.column('rent_bikes', width=50, anchor=tk.CENTER)
-        tree.column('retuen_bikes', width=50, anchor=tk.CENTER)
+        tree.column('sarea',width=70,anchor=tk.CENTER)
+        tree.column('mday',width=120,anchor=tk.CENTER)
+        tree.column('ar',minwidth=100)
+        tree.column('total',width=50,anchor=tk.CENTER)
+        tree.column('rent_bikes',width=50,anchor=tk.CENTER)
+        tree.column('retuen_bikes',width=50,anchor=tk.CENTER)
+
+        # bind
+        tree.bind('<<TreeviewSelect>>', self.item_selected)
 
         # add data to the treeview
         for site in self.data:
@@ -55,11 +62,12 @@ class Window(ThemedTk):
 
         mainFrame.pack(expand=True, fill=tk.BOTH, padx=10, pady=10)
 
-
-    @property
-    def data(self)->list[dict]:
-        return self.__data
-    
+    def item_selected(self, event):
+        tree = event.widget
+        for selected_item in tree.selection():
+            item = tree.item(selected_item)
+            record:list = item['values']
+            print(record[0])
 
 def main():
     window = Window(theme='breeze')
