@@ -20,7 +20,7 @@ class CustomMessagebox(Dialog):
                                          )
         map_widget.pack()
         marker = map_widget.set_position(self.site.lat, self.site.lng, marker=True)
-        marker.set_text(f'{self.site.sarea}\n{self.site.sna}')
+        marker.set_text(f'{self.site.sarea}\n {self.site.sna}\n Total Bikes: {self.site.total}\n Available Bikes: {self.site.rent_bikes}\n Available Spots: {self.site.retuen_bikes}')
         map_widget.set_zoom(20)
         map_frame.pack(expand=True,fill='both')
         #===================
