@@ -21,6 +21,12 @@ class CustomMessagebox(Dialog):
         map_widget.pack()
         marker = map_widget.set_position(self.site.lat, self.site.lng, marker=True)
         marker.set_text(f'{self.site.sarea}\n {self.site.sna}\n Total Bikes: {self.site.total}\n Available Bikes: {self.site.rent_bikes}\n Available Spots: {self.site.retuen_bikes}')
+        start_point = self.site.lat+0.0005,self.site.lng+0.0005
+        end_point = start_point[0],start_point[1]-0.001
+        down_point = end_point[0]-0.001, end_point[1]
+        left_point = down_point[0], down_point[1]+0.001
+        up_point = left_point[0]+0.001, left_point[1]
+        path = map_widget.set_path([start_point, end_point, down_point, left_point, up_point])
         map_widget.set_zoom(20)
         map_frame.pack(expand=True,fill='both')
         #===================
