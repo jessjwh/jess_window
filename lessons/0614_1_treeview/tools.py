@@ -6,12 +6,25 @@ import tkintermapview as tkmap
 
 class CustomMessagebox(Dialog):
     def __init__(self, parent:Misc, title:str, site:Info):
-        print(site)
+        self.site:Info = site
         super().__init__(parent=parent, title=title)
 
     def body(self, master):
-        content_frame = ttk.Frame(master, width=100, height=100, style='input.TFrame')   
-        content_frame.pack(pady=10,padx=30)
+        contain_frame = ttk.Frame(master)
+        #====================    
+        map_frame = ttk.Frame(contain_frame)
+        map_widget = tkmap.TkinterMapView(map_frame,
+                                         width=800,
+                                         height=600,
+                                         corner_radius=0
+                                         )
+        map_widget.pack()
+        marker = map_widget.set_position(self.site.lat, self.site.lng, marker=True)
+        marker.set_text(f'{self.site.sarea}\n{self.site.sna}')
+        map_widget.set_zoom(20)
+        map_frame.pack(expand=True,fill='both')
+        #===================
+        contain_frame.pack(expand=True,fill='both',pady=10,padx=30)
 
     def apply(self):
         pass
