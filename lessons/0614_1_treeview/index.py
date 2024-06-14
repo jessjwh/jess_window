@@ -17,7 +17,7 @@ class Window(ThemedTk):
 
     def _display_interface(self):
         mainFrame = ttk.Frame(borderwidth=1, relief="groove")
-        ttk.Label(mainFrame, text="YouBike2.0 Realtime Data", font=('Helvetica', 16)).pack()
+        ttk.Label(mainFrame, text="YouBike2.0 Realtime Data", font=('Helvetica', 16)).pack(pady=(20,10))
 
 
         tableFrame = ttk.Frame(mainFrame)
@@ -51,9 +51,9 @@ class Window(ThemedTk):
         tree.configure(yscroll=scrollbar.set)
         scrollbar.grid(row=0, column=1, sticky='ns')
 
+        tableFrame.pack(expand=True, fill=tk.BOTH, ipadx=20, ipady=20)
 
-        tableFrame.pack(expand=True,fill=tk.BOTH)
-        mainFrame.pack(expand=True,fill=tk.BOTH, padx=10, pady=10)
+        mainFrame.pack(expand=True, fill=tk.BOTH, padx=10, pady=10)
 
 
     @property
