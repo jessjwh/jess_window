@@ -2,13 +2,9 @@ import tkinter as tk
 from tkinter import ttk, messagebox, Misc
 from ttkthemes import ThemedTk
 import data
-from data import FilterData, Info
-from tools import CustomMessagebox
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-
-
 
 class Window(ThemedTk):
     def __init__(self, theme:str='arc', **kwargs):
@@ -64,16 +60,16 @@ class Window(ThemedTk):
         tree.configure(yscroll=scrollbar.set)
         scrollbar.grid(row=0, column=1, sticky='ns')
 
-        tableFrame.pack(expand=True, fill=tk.BOTH, ipadx=20, ipady=20)
+        tableFrame.pack(ipadx=20, ipady=20)
 
         self.pieChartFrame = PieChartFrame(mainFrame)
-        self.pieChartFrame.pack(expand=True, fill='both')
-        mainFrame.pack(expand=True, fill=tk.BOTH, padx=10, pady=10)
+        self.pieChartFrame.pack()
+        mainFrame.pack(padx=10, pady=10)
 
     def item_selected(self,event):
         tree = event.widget
         records:list[list] = []       
-        for selected_item in tree.selection():
+        for selected_item in tree.selection()[:3]:
             item = tree.item(selected_item)            
             record:list = item['values']
             records.append(record)
@@ -85,7 +81,10 @@ class PieChartFrame(ttk.Frame):
         self.configure({'borderwidth':2,'relief':'groove'})
         #self.config({'borderwidth':2,'relief':'groove'})        
         #self['borderwidth'] = 2
-        #self['relief'] = 'groove'         
+        #self['relief'] = 'groove'
+        style = ttk.Style()
+        style.configure('abc.TFrame', background = '#ffffff')
+        self.configure(style = 'abc.TFrame')
 
     @property
     def infos(self)->None:
@@ -104,7 +103,7 @@ class PieChartFrame(ttk.Frame):
             total:int = data[4]
             rents:int = data[5]
             returns:int = data[6]
-            oneFrame = ttk.Frame(self)
+            oneFrame = ttk.Frame(self, style='abc.TFrame')
             ttk.Label(oneFrame,text="Area: ").grid(row=0,column=0, sticky='e')
             ttk.Label(oneFrame,text=area).grid(row=0,column=1, sticky='w')
 
@@ -142,6 +141,9 @@ class PieChartFrame(ttk.Frame):
                     shadow=True,
                     autopct=lambda pct: func(pct, values),
                     textprops=dict(color="white"))
+            axes.legend(title="Rate:",
+                        loc="center left",
+                        bbox_to_anchor=(0,0,0,2))
 
             canvas = FigureCanvasTkAgg(figure,oneFrame)
             canvas.draw()
@@ -151,32 +153,6 @@ class PieChartFrame(ttk.Frame):
                 canvas.get_tk_widget().delete(item)
 
             oneFrame.pack(side='left',expand=True,fill='both')    
-
-
-
-# import matplotlib.pyplot as plt
-# import numpy as np
-
-# def func(pct, allvals):
-#     absolute = int(np.round(pct/100.*np.sum(allvals)))
-#     return f"{absolute:d}pcs - {pct:.1f}%"
-
-# values = [5, 6]
-# labels = ['Rent','Return']
-# colors = ['magenta','pink']
-# figure = plt.figure(figsize=(5,5),dpi=72)
-# axes = figure.add_subplot()
-# axes.pie(values,colors=colors,
-#          labels=labels,
-#          labeldistance=0.4,
-#          shadow=True,
-#          autopct=lambda pct: func(pct, values),
-#          textprops=dict(color="white"))
-# #axes.set_title('title')
-
-# plt.show()
-
-
 
 def main():
     def on_closing():
