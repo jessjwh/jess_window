@@ -24,4 +24,4 @@
 
 
 ### 七、MVP視窗示意：
-![Windows - MVP](./mvp%20windows.png)
+![Windows - MVP](./MVP視窗示意.png)
