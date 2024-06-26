@@ -20,6 +20,7 @@ def main():
                 lat REAL,
                 lng REAL,
                 act boolean
+                CONSTRAINT unique_sna_updatetime UNIQUE (sna, updateTime)
             );
             '''
             cursor.execute(sql)
