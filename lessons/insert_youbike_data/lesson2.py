@@ -1,11 +1,13 @@
 import psycopg2
 import data
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-def main():
-    
-    conn = psycopg2.connect("postgresql://jess_user:DNwWkgwMxldyiXLLtMSuAlaNjRUahoJZ@dpg-cpsctat6l47c73e3hc40-a.singapore-postgres.render.com/jess")
-    with conn: 
-        with conn.cursor() as cursor: 
+def main():    
+    conn = psycopg2.connect(os.environ['POSTGRESQL_TOKEN'])
+    with conn: #with conn會自動commit(),手動close
+        with conn.cursor() as cursor: #自動close()
             sql = '''
                 CREATE TABLE IF NOT EXISTS youbike(
                 _id Serial Primary Key,
@@ -19,7 +21,8 @@ def main():
                 return_bikes SMALLINT,
                 lat REAL,
                 lng REAL,
-                act boolean
+                act boolean,
+                UNIQUE (sna, updateTime)
             );
             '''
             cursor.execute(sql)
@@ -29,7 +32,9 @@ def main():
         with conn.cursor() as cursor:            
             insert_sql = '''
             INSERT INTO youbike(sna, sarea, ar, mday, updatetime, total, rent_bikes,return_bikes,lat,lng,act)
-            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);
+            VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            ON CONFLICT (sna, updateTime) 
+			DO NOTHING;
             '''
             for site in all_data:
                 cursor.execute(insert_sql,(site['sna'],
