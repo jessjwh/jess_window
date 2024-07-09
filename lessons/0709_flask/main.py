@@ -6,15 +6,15 @@ app = Flask(__name__)
 def index():
     return render_template('index.html.jinja')
 
-@app.route('/hello')
-def hello():
-    return '<h1>Hello again.</h1>'
+@app.route('/gallery')
+def gallery():
+    return render_template('gallery.html.jinja')
 
-@app.route('/user/<username>')
-def show_user_profile(username):
-    return f'<h1>Hi {username}!</h1>'
+@app.route('/instagram')
+def instagram():
+    return render_template('instagram.html.jinja')
 
-@app.route('/post/<int:post_id>')
-def show_post(post_id):
-    return f'<h1>Post {post_id}</h1>'
+@app.route('/contact')
+def contact():
+    return render_template('contact.html.jinja')
 
