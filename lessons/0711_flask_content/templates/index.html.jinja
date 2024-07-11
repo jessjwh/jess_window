@@ -18,46 +18,18 @@
 
     <div class="row">
         <div class="col-4" style="background-color:#ff9b54">
-            <select class="form-select" aria-label="Default select example">
-            <option selected>Select an area:</option>
-            {% for area in areas %}
-            <option value="1">{{area}}</option>
-            {% endfor %}
-            </select>
+            <form action="{{url_for('index')}}" method="get">
+                <select class="form-select" aria-label="Default select example" name="area">
+                    <option selected>Select an area:</option>
+                    {% for area in areas %}
+                    <option value="{{area}}">{{area}}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="btn btn-primary" style="background-color: #ce4257;">Let's gooo!</button>
+            </form>
         </div>
         <div class="col-8" style="background-color:#ff7f51">
-            Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and sizes
-            thanks to a twelve
-            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
-            classes.
-            Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and sizes
-            thanks to a twelve
-            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
-            classes. Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and
-            sizes
-            thanks to a twelve
-            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
-            classes. Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and
-            sizes
-            thanks to a twelve
-            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
-            classes. Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and
-            sizes
-            thanks to a twelve
-            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
-            classes. Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and
-            sizes
-            thanks to a twelve
-            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
-            classes. Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and
-            sizes
-            thanks to a twelve
-            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
-            classes. Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and
-            sizes
-            thanks to a twelve
-            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
-            classes.
+            {{show_area}}
         </div>
     </div>
 </main>
