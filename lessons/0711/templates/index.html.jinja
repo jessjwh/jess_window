@@ -2,5 +2,14 @@
 
 
 {% block title %}
-jessify - home
+{{super()}} - Home
+{% endblock %}
+
+{% block head %}
+{{super()}}
+<style type"text/css">
+    body {
+        background-color: #ff9b54;
+    }
+</style>
 {% endblock %}
