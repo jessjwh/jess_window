@@ -18,7 +18,12 @@
 
     <div class="row">
         <div class="col-4" style="background-color:#ff9b54">
-            {{areas|join(', ')}}
+            <select class="form-select" aria-label="Default select example">
+            <option selected>Select an area:</option>
+            {% for area in areas %}
+            <option value="1">{{area}}</option>
+            {% endfor %}
+            </select>
         </div>
         <div class="col-8" style="background-color:#ff7f51">
             Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and sizes
