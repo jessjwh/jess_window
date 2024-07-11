@@ -13,27 +13,47 @@
 {% endblock %}
 
 
-{% block left_content %}
-{{left|striptags|title}}
-{% endblock %}
+{% block main %}
+<main class="container text-center">
 
-{#
-{% block right_content %}
-<ul>
-    {% for item in ['jess','tommy','olives','pauliina',vicky] %}
-    <li>{{item}}</li>
-    {% endfor %}
-</ul>
-
-{% endblock %}
-#}
-
-{% block right_content %}
-<ul class="nav flex-column">
-
-    {% for item in ['jess','tommy','olives','pauliina','vicky'] %}
-    <a class="nav-link" href="#" style="color: #720026;">{{item}}</a>
-    </li>
-    {% endfor %}
-</ul>
+    <div class="row">
+        <div class="col-4" style="background-color:#ff9b54">
+            {{areas|join(', ')}}
+        </div>
+        <div class="col-8" style="background-color:#ff7f51">
+            Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and sizes
+            thanks to a twelve
+            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
+            classes.
+            Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and sizes
+            thanks to a twelve
+            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
+            classes. Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and
+            sizes
+            thanks to a twelve
+            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
+            classes. Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and
+            sizes
+            thanks to a twelve
+            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
+            classes. Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and
+            sizes
+            thanks to a twelve
+            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
+            classes. Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and
+            sizes
+            thanks to a twelve
+            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
+            classes. Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and
+            sizes
+            thanks to a twelve
+            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
+            classes. Use our powerful <strong>mobile-first flexbox grid</strong> to build layouts of all shapes and
+            sizes
+            thanks to a twelve
+            column system, six default responsive tiers, Sass variables and mixins, and dozens of predefined
+            classes.
+        </div>
+    </div>
+</main>
 {% endblock %}
