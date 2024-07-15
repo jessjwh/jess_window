@@ -23,7 +23,7 @@ def get_snaOfArea(area:str) -> list[tuple]:
     with conn:
         with conn.cursor() as cursor:
             sql ='''
-            SELECT sna AS Site, sarea AS Area, ar AS Address, total AS Total, rent_bikes AS Bikes, return_bikes AS Spots, mday AS Time, act AS Status
+            SELECT sna AS Site, total AS Total, rent_bikes AS Bikes, return_bikes AS Spots, mday AS Time, act AS Status
                FROM youbike
                WHERE (updateTime, sna) IN (
 	               SELECT MAX(updateTime), sna
