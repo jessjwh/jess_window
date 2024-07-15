@@ -22,9 +22,9 @@
                 <select class="form-select" aria-label="Default select example" name="area">
                     <option selected>{{show_area}}</option>
                     {% for area in areas %}
-                        {% if area != show_area %}
-                            <option value="{{area}}">{{area}}</option>
-                        {% endif %}
+                    {% if area != show_area %}
+                    <option value="{{area}}">{{area}}</option>
+                    {% endif %}
                     {% endfor %}
                 </select>
                 <button type="submit" class="btn btn-primary" style="background-color: #ce4257;">Let's gooo!</button>
@@ -36,10 +36,10 @@
                 <thead>
                     <tr>
                         <th scope="col">Site</th>
-                        <th scope="col">Total</th>
+                        <th scope="col">Area</th>
+                        <th scope="col">Address</th>
                         <th scope="col">Bikes</th>
                         <th scope="col">Spots</th>
-                        <th scope="col">Time</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
