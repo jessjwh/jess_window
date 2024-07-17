@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the dataset
-file_path = '/Users/jesshuang/Documents/GitHub/jess_project/the_happiness_project/World Happiness Report_new.csv'
+file_path = '/Users/jesshuang/Documents/GitHub/jess_window/project/the_happiness_project/World Happiness Report_new.csv'
 data = pd.read_csv(file_path)
 
 # List of columns to plot against Life Ladder
