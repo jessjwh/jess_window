@@ -1,14 +1,18 @@
-### The Happiness Project
+### 一、專案組名 - The Happiness Project 人生快樂專案
+### 二、專案組員
+- 黃靖雯
+- 王愷立
+- 林見恆
+### 三、專案程式碼
 - [Python Code](./index.py)
-### Purpose:
-- Analyse the factors of creating happiness in life.
-### How:
-- Through data collected around the world, we analyse and look into the deciding factors for happiness.
-### Why:
-- Users can reevaluate the factors in their lives to find out what truly matters and thus enhance the level of happiness.
-#### Data Source:
+### 四、專案目的：分析影響「快樂」的各項生活指標及重要性
+### 五、專案目的
+- 透過全球各地區政經及社會發展差異，分析出影響現代人類心理健康的主要因素。
+#### 使用時機：
+- 當使用者對生活感到厭倦時，可藉由此工具察覺生活環境潛在影響因素，進而提升生活及心理健康品質。
+### 六、資料說明：
 - ["World Happiness Report, 2005-Present" on Kaggle](https://www.kaggle.com/datasets/usamabuttar/world-happiness-report-2005-present/data)
-#### Date Notes:
+#### 資料說明:
 - **Log GDP per capita** is in terms of Purchasing Power Parity (PPP) adjusted to a constant 2017 international dollars, taken from the World Development Indicators (WDI) by the World Bank (version 17, metadata last updated on January 22, 2023). See Statistical Appendix 1 for more details. GDP data for 2022 are not yet available, so we extend the GDP time series from 2021 to 2022 using country-specific forecasts of real GDP growth from the OECD Economic Outlook No. 112 (November 2022) or, if missing, from the World Bank’s Global Economic Prospects (last updated: January 10, 2023), after adjustment for population growth. The equation uses the natural log of GDP per capita, as this form fits the data significantly better than GDP per capita.
 - The time series for **Healthy life expectancy** at birth is constructed based on data from the World Health Organization (WHO) Global Health Observatory data repository, with data available for 2005, 2010, 2015, 2016, and 2019. To match this report’s sample period (2005-2022), interpolation and extrapolation are used. See Statistical Appendix 1 for more details.
 - Social support (0-1) is the national average of the binary responses (0=no, 1=yes) to the Gallup World Poll (GWP) question “If you were in trouble, do you have relatives or friends you can count on to help you whenever you need them, or not?”
@@ -19,7 +23,7 @@
 - **Negative affect** is defined as the average of previous-day effects measures for worry, sadness, and anger.
 
 
-### Window Display：
+### 七、MVP視窗示意：
 ![Windows - Start](./img_window/window_originalsize.png)
 ![Windows - 1](./img_window/window_1.png)
 ![Windows - 2](./img_window/window_2.png)
