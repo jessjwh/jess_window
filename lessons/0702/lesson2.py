@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 def main():
-    
+    # the following cold is to load data into the database
     conn = psycopg2.connect(os.environ['POSTGRESQL_TOKEN'])
     with conn: 
         with conn.cursor() as cursor: 
