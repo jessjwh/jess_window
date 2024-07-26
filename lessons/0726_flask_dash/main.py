@@ -1,7 +1,16 @@
 from flask import Flask, render_template, request
+from werkzeug.middleware.dispatcher import DispatcherMiddleware
+from werkzeug.serving import run_simple
+from dashboard.board1 import app1
+from dashboard.board2 import app2
 import data
+import dashboard
 
 app = Flask(__name__)
+application = DispatcherMiddleware(app,{
+    "/dashboard/app1": app1.server,
+    "/dashboard/app2":app2.server
+})
 
 @app.route("/")
 def index():
@@ -20,3 +29,5 @@ def index1():
     #detail_snaes -> 該行政區所有站點資訊   
     return render_template('index1.html.jinja',areas=areas,show_area=selected_area,detail_snaes=detail_snaes)    
 
+if __name__ == "__main__":
+    run_simple("localhost", 8080, application, use_debugger=True, use_reloader=True)
