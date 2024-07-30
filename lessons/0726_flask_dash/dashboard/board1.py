@@ -47,7 +47,7 @@ app1.layout = html.Div([
 
 ])
 
-@callback(
+@app1.callback(
     Output('indicator-graphic','figure'),
     Input('xaxis-column','value'),
     Input('yaxis-column','value'),
