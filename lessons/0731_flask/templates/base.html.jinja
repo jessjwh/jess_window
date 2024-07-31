@@ -28,13 +28,20 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="./dashboard/app1">Gallery</a>
                     </li>
+
+                    {% if 'username' in session['username'] %}
                     <li class="nav-item">
                         <a class="nav-link" href="./dashboard/app2">YouBike</a>
                     </li>
 
                     <li class="nav-item">
+                        <a class="nav-link" href="/auth/logout">Log Out</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
                         <a class="nav-link" href="/auth/login">Log In</a>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
 

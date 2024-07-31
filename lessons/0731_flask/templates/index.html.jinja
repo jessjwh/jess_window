@@ -14,5 +14,8 @@
 
 
 {% block main %}
-<h1>This is a page.</h1>
+{% if username %}
+    <h3>Hello, {{username}}!</h3>
+{% endif %}
+<h1>Welcome to Home.</h1>
 {% endblock %}

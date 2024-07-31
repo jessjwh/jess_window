@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask,render_template,request, session, redirect
 from werkzeug.middleware.dispatcher import DispatcherMiddleware
 from werkzeug.serving import run_simple
 from dashboard.board1 import app1
@@ -11,14 +11,19 @@ import secrets
 app = Flask(__name__)
 app.config['SECRET_KEY'] = secrets.token_hex(16)
 app.register_blueprint(auth_blueprint)
+
 application = DispatcherMiddleware(app,{
-    "/dashboard/app1": app1.server,
+    "/dashboard/app1":app1.server,
     "/dashboard/app2":app2.server
 })
 
 @app.route("/")
 def index():
-    return render_template("index.html.jinja")
+    if 'username' in session:
+        user = session['username']
+    else:
+        user = None
+    return render_template("index.html.jinja", username = user)
 
 @app.route("/index1")
 def index1():

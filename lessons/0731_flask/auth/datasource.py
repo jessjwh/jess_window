@@ -8,9 +8,9 @@ def validateUser(email:str,password:str) -> tuple[bool,str]:
     with conn:
         with conn.cursor() as cursor:
             sql ='''
-            SELECT password,name
-            FROM member
-            WHERE email = %s
+            select [password], [name]
+            from [member]
+            where [email] = %s
             '''
             cursor.execute(sql,[email])
             searchData:tuple[str, str] = cursor.fetchone()

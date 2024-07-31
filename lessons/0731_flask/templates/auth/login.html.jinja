@@ -16,4 +16,16 @@ This is where you Log In, baby!
     </div>
     <input type="submit" value="Let's Go" class="btn btn-primary">
     </form>
+
+    {% if form.email.errors %}
+        <ul>
+        {% for errors in form.email.errors %}
+            <li>
+                <div class="alert alert-warning" role="alert">
+                    {{errors}}
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
 {% endblock %}
