@@ -13,8 +13,11 @@ def validateUser(email:str,password:str) -> tuple[bool,str]:
             where [email] = %s
             '''
             cursor.execute(sql,[email])
-            searchData:tuple[str, str] = cursor.fetchone()
-            database_password = searchData[0]
-            username = searchData[1]
-            return  password == database_password, username 
+            searchData:tuple[str, str]| None = cursor.fetchone()
+            if searchData:
+                database_password = searchData[0]
+                username = searchData[1]
+                return  password == database_password, username 
+            else:
+                return False, ""
     conn.close()

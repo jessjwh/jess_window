@@ -32,6 +32,8 @@ def index():
 
     else:
         print("New Entry")
+        if email is not None:
+            form.email.data = email
     
     return render_template('/auth/login.html.jinja',form=form)
 
