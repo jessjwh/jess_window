@@ -1,0 +1,19 @@
+{% extends "base.html.jinja" %}
+
+{% block title %}
+This is where you Log In, baby!
+{% endblock %}
+
+{% block main %}
+<h1>Log In</h1>
+<form method="POST">
+    {{ form.csrf_token }}
+    <div class="mb-3">
+        {{ form.email.label(class="form-label") }} {{form.email(class="form-control",size=30,minlength=4,maxlength=30)}}
+    </div>
+    <div class="mb-3">
+        {{ form.password.label(class='form-label')}} {{ form.password(class='form-control')}}
+    </div>
+    <input type="submit" value="Let's Go" class="btn btn-primary">
+    </form>
+{% endblock %}
