@@ -14,7 +14,7 @@
 <body>
     <nav class="navbar navbar-expand-md bg-body-tertiary">
         <div class="container-md">
-            <a class="navbar-brand" style="color: #ce4257;" href="#">
+            <a class="navbar-brand" style="color: #ce4257;" href="/">
                 <img src="{{url_for('static', filename='images/logo.png')}}" alt="Toggle navigation"
                     style="width: 30px; height: 30px;"> jessify</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -29,7 +29,7 @@
                         <a class="nav-link active" aria-current="page" href="./dashboard/app1">Gallery</a>
                     </li>
 
-                    {% if 'username' in session['username'] %}
+                    {% if 'username' in session %}
                     <li class="nav-item">
                         <a class="nav-link" href="./dashboard/app2">YouBike</a>
                     </li>

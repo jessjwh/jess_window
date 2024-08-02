@@ -1,0 +1,100 @@
+{% extends "base.html.jinja" %}
+{% block title %}
+Register Now
+{% endblock%}
+
+{% block main%}
+<h1>Register</h1>
+<form method="POST">
+    {{ form.csrf_token }}
+    <table class="table caption-top ">
+        <caption>Register Now</caption>
+        <tbody class="table-group-divider">
+            <tr>
+                <th scope="row" class="col-2 text-end ">{{form.uName.label(class="form-label")}}</th>
+                <td>{{form.uName(class="form-control")}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-2 text-end">{{form.uSex.label(class="form-label")}}</th>
+                <td>{{form.uSex(class="form-select")}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-2 text-end">{{form.uMobile.label(class="form-label")}}</th>
+                <td>{{form.uMobile(class="form-control")}}
+                    <p class="lead h6 mt-3"><u>format:0900-000-000</u></p>
+                    {% if(form.uMobile.errors) %}
+                    <ul class="errors">
+                        {% for error in form.uMobile.errors %}
+                        <li>
+                            <div class="alert alert-warning" role="alert">
+                                {{ error }}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-2 text-end">{{form.uEmail.label(class="form-label")}}</th>
+                <td>
+                    {{form.uEmail(class="form-control")}}
+                    {% if(form.uEmail.errors) %}
+                    <ul class="errors">
+                        {% for error in form.uEmail.errors %}
+                        <li>
+                            <div class="alert alert-warning" role="alert">
+                                {{ error }}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row" class="col-2 text-end">{{form.isGetEmail.label(class="form-label")}}</th>
+                <td>{{form.isGetEmail(class="form-check-input")}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-2 text-end">{{form.uBirth.label(class="form-label")}}</th>
+                <td>{{form.uBirth()}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-2 text-end">{{form.uAboutMe.label(class="form-label")}}</th>
+                <td>{{form.uAboutMe(class="form-control",placeholder="Max 200 characters")}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-2 text-end">{{form.uPass.label(class="form-label")}}</th>
+                <td>{{form.uPass(class="form-control")}}
+                    <p class="lead h6 mt-3" style="font-size: 0.8em;"><u>Min 4 characters, max 20 characters</u></p>
+                    {% if(form.uPass.errors) %}
+                    <ul class="errors">
+                        {% for error in form.uPass.errors %}
+                        <li>
+                            <div class="alert alert-warning" role="alert">
+                                {{ error }}
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </td>
+
+            </tr>
+            <tr>
+                <th scope="row" class="col-2 text-end">{{form.uConfirmPass.label(class="form-label")}}</th>
+                <td>{{form.uConfirmPass(class="form-control")}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="col-2 text-end"></th>
+                <td><input class="btn btn-primary" type="submit"></td>
+            </tr>
+
+        </tbody>
+    </table>
+</form>
+{{ super() }}
+</div>
+{% endblock %}

@@ -5,7 +5,7 @@ This is where you Log In, baby!
 {% endblock %}
 
 {% block main %}
-<h1>Log In</h1>
+<h1 style="font-weight: 100;">Already a member?</h1>
 <form method="POST">
     {{ form.csrf_token }}
     <div class="mb-3">
@@ -14,7 +14,8 @@ This is where you Log In, baby!
     <div class="mb-3">
         {{ form.password.label(class='form-label')}} {{ form.password(class='form-control')}}
     </div>
-    <input type="submit" value="Let's Go" class="btn btn-primary">
+    <input type="submit" value="Let's Go" class="btn btn-primary" style="background-color: #ce4257;">
+    <a href="/auth/register" class="ps-3" style="color: #ce4257">Register</a>
     </form>
 
     {% if form.email.errors %}
